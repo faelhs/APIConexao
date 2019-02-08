@@ -35,10 +35,11 @@ if($rows){
         exit;
     }
     else{
+        /*
         $sql = "SELECT * FROM usuarios WHERE login = '$login'";
         $result = $dbapi->query($sql);
         $rows = $result->fetchAll( PDO::FETCH_ASSOC );
-        /*
+        
         //Cadastro ragnarok.
         $sql = "INSERT INTO login(userid, user_pass, sex, email,birthdate) VALUES('".$rows[0][login]."','".$rows[0][senha]."','".$rows[0][sexo]."','".$rows[0][email]."','".$rows[0][nascimento]."')";
         $stmt = $dbrag->prepare( $sql );

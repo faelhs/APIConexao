@@ -113,7 +113,7 @@
                 <div class="container relative">
                     
                     <h2 class="section-title font-alt align-left mb-70 mb-sm-40">
-                        About Studio
+                        Sobre a private games Brasil
                     </h2>
                     
                     <div class="section-text mb-50 mb-sm-20">
