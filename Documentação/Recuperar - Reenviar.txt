@@ -1,0 +1,65 @@
+Bem vindo ao sistema de gestão de jogos Private Games Brasil.
+Nossa api trabalha com solicitações em HTML/POST com retorno.
+
+Para implementação PHP deve ser usado a biblioteca "curl".
+
+Validando usuarios.
+
+Campos:
+key                     | Chave de acesso unica para usar a api.
+tipo                    | Tipo de solicitação
+email                   | Email do utilizador
+link                    | Link utilizado para ativar a conta
+caso                    | 1 Recuperar senha / 2 Reenviar email de validação
+
+Exemplo de solicitação:
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <?php
+        $email = $_POST['email'];
+        $caso = $_POST['caso'];
+        if($_POST){
+            $cr = curl_init();   
+            curl_setopt($cr, CURLOPT_URL, "http://siteapi/api/index.php");   
+            curl_setopt($cr, CURLOPT_RETURNTRANSFER, true);   
+            curl_setopt($cr, CURLOPT_POST, TRUE);  
+            curl_setopt($cr, CURLOPT_POSTFIELDS, ""
+                    . "key=9c5e0ebc9434f840e75c03db90c87164"
+                    . "&tipo=resend"
+                    . "&email=".$email 
+                    . "&caso=".$caso 
+                    . "&link=http://siteapi/api/Validar.php");   
+            $retorno = curl_exec($cr);  
+            curl_close($cr); 
+            echo $retorno;
+        }
+        ?>       
+        <form action="#" method="Post">
+            <input name="email" id="login" value="">
+            <input name="caso"  id="caso" value="1" type="hidden">
+            <button type="submit">Recuperar Senha</button>
+        </form>
+        <form action="#" method="Post">
+            <input name="email" id="login" value="">
+            <input name="caso"  id="caso" value="2" type="hidden">
+            <button type="submit">Reenviar Email</button>
+        </form>
+    </body>
+</html>
+
+  
+
+Respostas:
+
+    Erro 006
+    Email nao cadastrado.
+
+    Erro 007
+    Usuario já está verificado
+
+    200 OK

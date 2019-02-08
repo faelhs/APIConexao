@@ -1,0 +1,100 @@
+Bem vindo ao sistema de gestão de jogos Private Games Brasil.
+Nossa api trabalha com solicitações em HTML/POST com retorno.
+
+Para implementação PHP deve ser usado a biblioteca "curl".
+
+Cadastrando usuarios.
+
+Campos:
+key                     | Chave de acesso unica para usar a api.
+tipo                    | Tipo de solicitação
+link                    | Link utilizado para ativar a conta
+nome                    | Nome do utilizador
+sobrenome               | Sobrenome do utilizador
+nascimento              | Data de nascimento do utilizador no formato americano YYYY-MM-DD
+email                   | Email do utilizador
+telefone                | Telefone do utilizador
+sexo                    | Sexo do utilizador
+login                   | Nome de usuario do utilizador
+senha                   | Senha de cadastro do utilizador
+resenha                 | Confirmação da senha de cadastro
+
+Exemplo de solicitação:
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <?php
+        
+        if($_POST){
+        $dados = [  filter_input(INPUT_POST, 'nome' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP),
+                    filter_input(INPUT_POST, 'sobrenome' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP),
+                    filter_input(INPUT_POST, 'nascimento' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP),
+                    filter_input(INPUT_POST, 'email' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP),
+                    filter_input(INPUT_POST, 'telefone' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP),
+                    filter_input(INPUT_POST, 'sexo' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP),
+                    filter_input(INPUT_POST, 'login' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP),
+                    filter_input(INPUT_POST, 'senha' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP),
+                    filter_input(INPUT_POST, 'resenha' ,FILTER_SANITIZE_STRING ,FILTER_FLAG_ENCODE_AMP)
+                ];
+
+            $cr = curl_init();   
+            curl_setopt($cr, CURLOPT_URL, "http://siteapi/api/index.php");   
+            curl_setopt($cr, CURLOPT_RETURNTRANSFER, true);   
+            curl_setopt($cr, CURLOPT_POST, TRUE);  
+            curl_setopt($cr, CURLOPT_POSTFIELDS, ""
+                    . "key=9c5e0ebc9434f840e75c03db90c87164"
+                    . "&tipo=cadastro"
+                    . "&link=http://siteapi/api/Validar.php"
+                    . "&nome=".$dados[0]
+                    . "&sobrenome=".$dados[1]
+                    . "&nascimento=".$dados[2]
+                    . "&email=".$dados[3]
+                    ."&telefone=".$dados[4]
+                    ."&sexo=".$dados[5]
+                    ."&login=".$dados[6]
+                    ."&senha=".$dados[7]
+                    ."&resenha=".$dados[8]);   
+            $retorno = curl_exec($cr);  
+            curl_close($cr); 
+            echo $retorno;
+        }
+        ?>
+        
+        <form action="#" method="Post">
+            <br>Nome<input id="nome" name="nome">
+            <br>Sobre nome<input id="sobrenome" name="sobrenome">
+            <br>email<input id="email" name="email">   
+            <br>telefone<input id="telefone" name="telefone">   
+            <br>sexo<input id="sexo" name="sexo">   
+            <br>nascimento<input id="nascimento" name="nascimento">   
+            <br>login<input id="login" name="login">   
+            <br>senha<input id="senha" name="senha">   
+            <br>resenha<input id="resenha" name="resenha">       
+            <br><button type="submit">Enviar</button>
+        </form>
+    </body>
+</html>
+  
+
+Respostas:
+    Erro 001
+    preencha todos os campos
+
+    Erro 002
+    login em uso escolha outro
+
+    Erro 003
+    Sexo deve ser informado como F para feminino ou M para masculino
+
+    Erro 004
+    email já cadastrado
+
+    Erro 005
+    senhas não conferem
+
+    200 OK 
+    Cadastro efetuado com sucesso

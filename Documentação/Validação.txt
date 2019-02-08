@@ -1,0 +1,74 @@
+Bem vindo ao sistema de gestão de jogos Private Games Brasil.
+Nossa api trabalha com solicitações em HTML/POST com retorno.
+
+Para implementação PHP deve ser usado a biblioteca "curl".
+
+Validando usuarios.
+
+Campos:
+key                     | Chave de acesso unica para usar a api.
+tipo                    | Tipo de solicitação
+login                   | Nome de usuario do utilizador
+code                    | Codigo de verificação do utilizador
+
+Exemplo de solicitação:
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <?php
+        $login = $_GET['login'];
+        $code = $_GET['code'];
+        if($_POST){
+            $cr = curl_init();   
+            curl_setopt($cr, CURLOPT_URL, "http://siteapi/api/index.php");   
+            curl_setopt($cr, CURLOPT_RETURNTRANSFER, true);   
+            curl_setopt($cr, CURLOPT_POST, TRUE);  
+            curl_setopt($cr, CURLOPT_POSTFIELDS, ""
+                    . "key=9c5e0ebc9434f840e75c03db90c87164"
+                    . "&tipo=confirmar"
+                    . "&login=".$login 
+                    . "&code=".$code);   
+            $retorno = curl_exec($cr);  
+            curl_close($cr); 
+            echo $retorno;
+        }
+        ?>       
+        <form action="#" method="Post">
+            <input name="login" id="login" value="<?php echo $login; ?>" type="hidden">
+            <input name="code" id="code" value="<?php echo $code; ?>" type="hidden">
+            <button type="submit">Validar  <?php echo $login; ?> </button>
+        </form>
+    </body>
+</html>
+
+  
+
+Respostas:
+
+    Erro 006
+    Usuario nao cadastrado.
+
+    Erro 007
+    Usuario já está verificado
+
+    Erro 008
+    Codigo de verificação invalido.
+
+    Erro 009
+    Falha ao cadastrar no ragnarok
+
+    Erro 010
+    Falha ao cadastrar no lineage
+    
+    Erro 011
+    Falha ao cadastrar no eudemons
+
+    Erro 012
+    Falha ao validar cadastro\n
+
+    200 OK
+    Verificado com sucesso.
