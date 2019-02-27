@@ -60,7 +60,7 @@ if($dados[7] != $dados[8]){
     print nl2br("\nsenhas não conferem");
     exit;
 }
-$code = rand();
+$code = rand(10000,100000);
 $sql = "INSERT INTO usuarios(nome, sobrenome, nascimento, email, telefone,sexo,login,senha,code) VALUES('$dados[0]','$dados[1]','$dados[2]','$dados[3]','$dados[4]','$dados[5]','$dados[6]','$dados[7]','$code')";
 $stmt = $dbapi->prepare( $sql );
 $result = $stmt->execute();

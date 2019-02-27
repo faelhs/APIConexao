@@ -18,6 +18,7 @@ function chamar_funcao($tipo){
         case cadastro: include 'solicitacoes/cadastro.php'; break;
         case confirmar: include 'solicitacoes/confirmacao.php'; break;
         case resend: include'solicitacoes/resend.php'; break;
+        case login: include'solicitacoes/login.php'; break;
         default: break;
     }
 }

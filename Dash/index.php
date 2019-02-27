@@ -7,6 +7,14 @@ Skype: .
 Email: fael.co.sa@gmail.com.
 Qualquer duvida de uso leia a documentação, caso restem duvidas entre em contato por um dos meios acima.
  */
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  header('location:login.php');
+  }
+  
 ?>
 <!doctype html>
 <html class="no-js" lang="">
