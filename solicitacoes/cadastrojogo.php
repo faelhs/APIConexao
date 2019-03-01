@@ -18,7 +18,7 @@ $game = filter_input(INPUT_POST, 'game', FILTER_SANITIZE_STRING, FILTER_FLAG_ENC
 $sql = "SELECT * FROM usuarios WHERE login = '$login'";
 $result = $dbapi->query($sql);
 $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-
+//print_r($rows);
 if (!$rows) {
     print nl2br("\nErro::GamesRegister 006");
     print nl2br("\nUsuario não cadastrado no sistema.");
@@ -29,9 +29,9 @@ switch ($game) {
         //Cadastro ragnarok.
         $sql = "SELECT userid FROM login WHERE userid = '".$rows[0][login]."'";
         $result = $dbrag->query($sql);
-        $rows = $result->fetchAll();
+        $rowsrag = $result->fetchAll();
 
-        if ($rows) {
+        if ($rowsrag) {
             $sql = "UPDATE game_data SET ragnarok = '1', ragdata = '" . $date . "', ragpass = '" . $rows[0][senha] . "' WHERE login = '" . $rows[0][login] . "'";
             $stmt = $dbapi->prepare($sql);
             $result = $stmt->execute();

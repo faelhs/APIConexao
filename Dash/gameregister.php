@@ -41,7 +41,7 @@
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $retorno = curl_exec($ch);
     curl_close($ch);
- 
+ //echo $retorno;
     if (strpos($retorno, "200 OK")) { 
        echo '<script> window.location = "index.php?pg=gameregister"; </script>';
     }
