@@ -19,6 +19,8 @@ function chamar_funcao($tipo){
         case confirmar: include 'solicitacoes/confirmacao.php'; break;
         case resend: include'solicitacoes/resend.php'; break;
         case login: include'solicitacoes/login.php'; break;
+        case cadastrojogo: include'solicitacoes/cadastrojogo.php'; break;
+        case gamedata: include'solicitacoes/gamedata.php'; break;
         default: break;
     }
 }
