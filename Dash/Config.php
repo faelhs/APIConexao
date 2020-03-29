@@ -9,4 +9,5 @@ Email: fael.co.sa@gmail.com.
 Qualquer duvida de uso leia a documentação, caso restem duvidas entre em contato por um dos meios acima.
 */
 $_url_solicitacoes = "http://localhost:8008/apipgbrasil/index.php";
+$_key = "";
 ?>
