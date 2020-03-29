@@ -8,7 +8,7 @@
   Qualquer duvida de uso leia a documentação, caso restem duvidas entre em contato por um dos meios acima.
  */
  $data = array(
-        'key' => '9b5e0ebc9434f840e75c03db90c87164',
+        'key' => $_key,
         'tipo' => 'gamedata',
         'login' => $_SESSION['login']
     );
@@ -28,7 +28,7 @@
     
     if($_POST){
         $data = array(
-        'key' => '9b5e0ebc9434f840e75c03db90c87164',
+        'key' => $_key,
         'tipo' => 'cadastrojogo',
         'login' => $_SESSION['login'],
         'game' => $_POST['game']
