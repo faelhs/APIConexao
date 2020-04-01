@@ -18,21 +18,21 @@ try {
 }
 
 try {
-    $dbrag = new PDO('mysql:host=ragnarok.pgbrasil.net;port=3306;dbname=dbragpgbrasilmid', "api", "c10437be");
+    $dbrag = new PDO('mysql:host=ragnarok.pgbrasil.net;port=3306;dbname=dbragpgbrasilmid', "api", "12345678");
 //print  nl2br("\nRagnarok OK");
 } catch (PDOException $e) {
     // print nl2br("\nError!: " . $e->getMessage());
 }
 
 try {
-    $dblin = new PDO('mysql:host=localhost;port=3306;dbname=lineage', "root", "c10437be");
+    $dblin = new PDO('mysql:host=localhost;port=3306;dbname=lineage', "root", "12345678");
 //print  nl2br("\nLineage II OK");
 } catch (PDOException $e) {
     // print nl2br("\nError!: " . $e->getMessage());
 }
 
 try {
-    $dbeod = new PDO('mysql:host=localhost;port=3306;dbname=eodemons', "root", "c10437be");
+    $dbeod = new PDO('mysql:host=localhost;port=3306;dbname=eodemons', "root", "12345678");
 //print  nl2br("\nEudemons OK");
 } catch (PDOException $e) {
     // print nl2br("\nError!: " . $e->getMessage());
